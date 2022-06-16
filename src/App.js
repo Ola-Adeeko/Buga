@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Switch, Route, Redirect} from 'react-router-dom';
+
+
+import ShopPage from './pages/shop/shop.component';
+import ProductDisplay from './pages/product/product.component';
+import CheckoutPage from './pages/checkout/checkout.component';
+import Header from './components/header/header.component';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div >
+        <Header />
+        <Switch>
+          <Route exact path='/'>
+          <Redirect  to="/shop/all" />
+          </Route>
+          <Route path="/shop/:category" component={ShopPage } />
+          <Route path="/product/:id" component={ProductDisplay} /> 
+          <Route exact path='/checkout' component={CheckoutPage } />
+          
+        </Switch>
+      </div>
+    );
+  }
+  
 }
 
 export default App;

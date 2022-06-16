@@ -1,0 +1,121 @@
+.product-display {
+  width: 95%;
+  margin: auto;
+  margin-top: 40px;
+  display:flex ;
+
+
+    .display-item {
+      width: 10%;
+      display: flex;
+
+      .small-image-container {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 20px;
+
+        .small-image {
+          height: 80px;
+          width: 79px;
+
+          .small {
+            height: 100%;
+            cursor: pointer;
+
+          }
+        }
+
+        
+      }
+    }
+    .main {
+      display: flex;
+      width: 90%;
+      height:595;
+
+      .large-image-container {
+        width: 60%;
+        height: 520px;
+        overflow: hidden;
+        position: S;
+
+        .large { 
+          height: 100%;
+        }
+
+        .stock {
+          width: 300px;
+          position: absolute;
+          top: 60%;
+          left: 45%;
+          transform: translate(-50%,-50%);
+          font-weight: 100;
+          font-size: 30px;
+          display: none;
+         
+        }
+      
+        &.out-stock {
+      
+        .large{
+          opacity: 0.5;
+        }
+        .stock{
+          display: flex;
+        
+          }
+       }
+      }
+    
+      .display-content {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 0px 0px 5px 50px;
+
+        .brand {
+          font-weight: 600;
+          font-size: 30px;
+        }
+        .name {
+          font-weight: 400;
+          font-size: 30px;
+          margin-bottom: 43px;
+  
+          }
+        }
+        .price {
+          font-size: 18px;
+          text-transform: uppercase;
+          font-family: 'Roboto Condensed', sans-serif;
+          margin: 12px 0 10px;
+        }
+        .amount {
+          font-size: 24px;
+          font-family: 'Raleway', sans-serif;
+          font-weight: 700;
+        }
+
+        .button {
+          button {
+            margin: 20px 0 40px;
+            width: 292px;
+            height: 52px;
+            line-height: 52px;
+          }
+        }
+        .description {
+          width: 292px;
+          font-family: 'Roboto Condensed', sans-serif;
+          font-size: 16px;
+          font-weight: 400;
+        }
+        
+    }
+    
+  }

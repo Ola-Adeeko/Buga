@@ -1,0 +1,52 @@
+.checkout-page {
+    width: 91%;
+    min-height: 90vh;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px auto 0;
+  
+    .checkout-header {
+      width: 100%;
+      padding: 10px 0 30px;
+      font-size: 32px;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid darkgrey;
+  
+      }
+    
+  
+    .total {
+      margin-top: 30px;
+      margin-left: 0;
+      font-size: 24px;
+      display: table;
+
+      .total-content {
+        display: table-cell;
+        font-weight: 400;
+      }
+      .total-amount {
+        display: table-cell;
+        padding-left: 10px ;
+        font-weight: 700;
+      }
+
+      div {
+        margin-bottom: 5px;
+       
+
+      }
+      div:last-child {
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+    }
+    button {
+      height: 43px;
+      width: 279px;
+      line-height: 43px;
+    }
+  }
+  
