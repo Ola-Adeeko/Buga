@@ -42,7 +42,6 @@ class Header extends React.Component {
                     </div>
                     <div className="logo-container"> <Logo className="logo" /></div>
                 
-                
                     <div className="cart">
                         <div><CurrencyIcon /></div>
                         <div><CartIcon /></div>
@@ -55,11 +54,8 @@ class Header extends React.Component {
                             }
         
                     </div>
-                
-        
                 </div>
             </div>
-            
         )
     }
 }

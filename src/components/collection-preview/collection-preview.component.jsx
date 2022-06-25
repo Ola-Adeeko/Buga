@@ -48,8 +48,6 @@ class CollectionPreview extends React.Component {
                             }}
                         
                     </Query>
-
-                    
                 </div>
             </div> 
          );

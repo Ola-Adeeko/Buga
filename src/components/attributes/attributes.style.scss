@@ -17,7 +17,12 @@
         grid-template-columns: repeat(4, 1fr);
         grid-gap: 10px;
 
-            li {
+            .radio-item{
+              display: none;
+            }
+
+            .radio-label {
+                content: "";
                 width: 63px;
                 height: 45px;
                 border: 1px solid black;
@@ -29,15 +34,18 @@
                 transition: transform 0.3s;
                 font-family: 'Source Sans Pro', sans-serif;
             }
+
+            .radio-item:checked + .radio-label {
+              color: white;
+              background-color: black;
+            }
         }
 
-        ul li:hover {
-        color: white;
-        background-color: black;
-        }
+        
     }
     .color {
         margin-bottom: 24px;
+        max-width: fit-content;
         
         span {
           font-size: 18px;
@@ -49,12 +57,16 @@
         ul {
           list-style: none;
           margin: 0;
-          padding: 5px 3px;
+          padding: 5px 0px;
           display: grid;
           grid-template-columns: repeat(4, 1fr);
           grid-gap: 10px;
+          
+          .radio-item{
+            display: none;
+          }
   
-          li{
+          .color-item{
             width: 32px;
             height: 32px;
             cursor: pointer;
@@ -63,8 +75,8 @@
           }
         }
   
-        ul li:hover {
-          outline: 2px solid #5ece7b;
+        .radio-item:checked + .color-item {
+          outline: 2.5px solid #5ece7b;
           outline-offset: 2px;
         }
         

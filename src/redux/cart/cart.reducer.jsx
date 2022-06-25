@@ -6,7 +6,7 @@ import { removeItemFromCart } from "./cart.utils";
 const INITIAL_STATE = {
     hidden: true,
     cartItems: [],
-    product: [],
+    product: {},
     currency: {
         label: "USD",
         symbol: "$"
@@ -38,7 +38,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         case CartActionTypes.DISPLAY_ITEM:
             return {
                 ...state,
-                product: action.payload
+                product: (state.product, action.payload)
             };
         default:
             return state    

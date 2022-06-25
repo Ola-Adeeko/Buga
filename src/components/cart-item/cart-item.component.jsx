@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import SizeAttribute from '../attributes/attributes.component';
+import Attribute from '../attributes/attributes.component';
 import {  addItem, removeItem } from "../../redux/cart/cart.actions";
 
 import './cart-item.style.scss';
@@ -21,7 +21,7 @@ class CartItem extends React.Component {
                     <span className="price">{price?.currency?.symbol}{price?.amount}</span>
                     {
                         product.attributes.map(attribute => (
-                            <SizeAttribute key={attribute.id} attribute={attribute} />
+                            <Attribute key={attribute.id} attribute={attribute} />
                         ))
                     }
                 </div>

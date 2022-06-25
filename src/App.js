@@ -20,12 +20,10 @@ class App extends React.Component {
           <Route path="/shop/:category" component={ShopPage } />
           <Route path="/product/:id" component={ProductDisplay} /> 
           <Route exact path='/checkout' component={CheckoutPage } />
-          
         </Switch>
       </div>
     );
   }
-  
 }
 
 export default App;

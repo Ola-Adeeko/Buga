@@ -64,9 +64,6 @@ class ProductDisplay extends React.Component {
               }
             
           </Query>
-          
-          
-      
       </div>
     );
   }

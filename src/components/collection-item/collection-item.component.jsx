@@ -34,15 +34,11 @@ class CollectionItem extends React.Component {
                         </div>
                         <div className="cart-icon" >< CartLogo className="icon" /></div>
                     </div>
-                </Link>
-            
-                
+                </Link>   
             );
-  
     }
 }
-
-       
+      
 
 const mapStateToProps = createStructuredSelector({
     currencySwitch : selectCurrencySwitch

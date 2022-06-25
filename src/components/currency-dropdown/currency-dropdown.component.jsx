@@ -30,10 +30,8 @@ class CurrencyDropdown extends React.Component {
                                    ))
                             }}  
                 </Query>
-            </div>
-            
+            </div>   
         );
-
     }
 }
 

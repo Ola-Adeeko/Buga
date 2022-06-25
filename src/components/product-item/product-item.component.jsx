@@ -5,6 +5,7 @@ import './product-item.style.scss';
 import { addItem } from "../../redux/cart/cart.actions";
 
 import { selectCurrencySwitch } from "../../redux/currency/currency.selector";
+import { displayItem } from "../../redux/cart/cart.actions"
 import { createStructuredSelector } from 'reselect'
 import Attribute from "../attributes/attributes.component";
 import CustomButton from "../../components/custom-button/custom-button.component";
@@ -29,8 +30,9 @@ class Product extends React.Component {
     }
     render() {
         const item = this.props.item
-        const {currencySwitch} = this.props
+        const {currencySwitch, addItem, display} = this.props
         const price = item.prices.find((price => price?.currency?.label === currencySwitch.label));
+       
         return (
             <div className="product-display">
                 <div className="display-item">
@@ -49,7 +51,7 @@ class Product extends React.Component {
                 </div>
                 <div className="main">
                     <div className={`${item.inStock ? '' : 'out-stock'} large-image-container`}>
-                        <img className="large" src={item.gallery[this.state.index]} alt="item" />
+                        <img className="large" src={item.gallery[this.state.index]} onClick={() => display(item)} alt="item" />
                         <div className="stock">
                                 <span>OUT OF STOCK</span>
                         </div>
@@ -61,7 +63,7 @@ class Product extends React.Component {
                         <div className="attribute">
                             {
                                 item.attributes.map(attribute => (
-                                    <Attribute key={attribute.id} attribute={attribute}  />
+                                    <Attribute key={attribute.id} attribute={attribute} onClick={display}  />
                                 ))
                             }
                         </div>
@@ -72,10 +74,9 @@ class Product extends React.Component {
                         </span>
                         <div className="button">
                             {
-                                item.inStock ? (<CustomButton onClick={() => this.props.addItem(item)}>ADD TO CART</CustomButton>) : <CustomButton outStock>ADD TO CART</CustomButton>
+                                item.inStock ? (<CustomButton onClick={() => addItem(item)}>ADD TO CART</CustomButton>) : <CustomButton outStock>ADD TO CART</CustomButton>
                             }
                         </div>
-                        
                         
                         <div className="description" dangerouslySetInnerHTML={{__html: item.description}} />
                     </div>
@@ -88,10 +89,12 @@ class Product extends React.Component {
     
 const mapDispatchToProps = dispatch => ({
     addItem: item => dispatch(addItem(item)),
+    display: item => dispatch(displayItem(item))
 });
 
 const mapStateToProps = createStructuredSelector({
-    currencySwitch : selectCurrencySwitch
+    currencySwitch : selectCurrencySwitch,
+   
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(Product);

@@ -12,8 +12,7 @@ class Currency extends React.Component {
         return (
             <div className='top' onClick={() => switchCurrency(item)} >
               <span className="left">{item.symbol}</span> <span className="right">{item.label}</span>
-            </div>
-            
+            </div>   
         );
     }
 }

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { selectCurrencySwitch } from "../../redux/currency/currency.selector";
 import { createStructuredSelector } from 'reselect'
-import SizeAttribute from "../attributes/attributes.component";
+import Attribute from "../attributes/attributes.component";
 import { addItem, removeItem } from "../../redux/cart/cart.actions";
 import './checkout-item.style.scss';
 
@@ -22,9 +22,9 @@ class CheckoutItem extends React.Component {
                     <span className="brand">{brand}</span>
                     <span className="name">{name}</span>
                     <span className="price">{price?.currency?.symbol}{price?.amount}</span>
-                    {
+                        {
                             attributes.map(attribute => (
-                                <SizeAttribute key={attribute.id} attribute={attribute} />
+                                <Attribute key={attribute.id} attribute={attribute} />
                             ))
                         }
                 </div>
