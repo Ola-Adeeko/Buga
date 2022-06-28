@@ -16,19 +16,25 @@ class Product extends React.Component {
         super();
 
         this.state = {
-            attribute: {
-                text:'',
-                swatch:''
-            },
-            index : 0
+            index : 0,
+            attributes: '',
+            addToBagMsg: "Select Choices To Add To Bag",
+            selected:{}
         }
 
     }
+    handleChange = (value) => {
+        this.setState({attributes: value})
+    }
+
+    
 
     handleTab = index => {
         this.setState({index:index})
     }
     render() {
+        console.log(this.state)
+
         const item = this.props.item
         const {currencySwitch, addItem, display} = this.props
         const price = item.prices.find((price => price?.currency?.label === currencySwitch.label));
@@ -63,7 +69,7 @@ class Product extends React.Component {
                         <div className="attribute">
                             {
                                 item.attributes.map(attribute => (
-                                    <Attribute key={attribute.id} attribute={attribute} onClick={display}  />
+                                    <Attribute key={attribute.id} attribute={attribute} onClick={display} onChange={this.handleChange} />
                                 ))
                             }
                         </div>
@@ -74,7 +80,7 @@ class Product extends React.Component {
                         </span>
                         <div className="button">
                             {
-                                item.inStock ? (<CustomButton onClick={() => addItem(item)}>ADD TO CART</CustomButton>) : <CustomButton outStock>ADD TO CART</CustomButton>
+                                (item.inStock && this.state.attributes !== '')  ? (<CustomButton onClick={() => addItem(item)}>ADD TO CART</CustomButton>) : <CustomButton outStock>ADD TO CART</CustomButton>
                             }
                         </div>
                         

@@ -39,10 +39,10 @@ class CartDropdown extends React.Component {
                         <span>{price?.currency?.symbol}{total.toFixed(2)}</span>
                     </div>
                     <div className="checkout">
-                        <CustomButton>VIEW BAG</CustomButton>
                         <Link to='/checkout'>
-                            <CustomButton onClick={() => this.props.dispatch(toggleCartHidden())}>CHECKOUT</CustomButton>
+                            <CustomButton onClick={() => this.props.dispatch(toggleCartHidden())}>VIEW BAG</CustomButton>
                         </Link>
+                        <CustomButton>CHECKOUT</CustomButton>
                     </div>
                 </div>
                 <div className='pop-up' onClick={() => this.props.dispatch(toggleCartHidden())}></div>

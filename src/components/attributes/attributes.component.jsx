@@ -4,9 +4,17 @@ import'./attributes.style.scss';
 
 
 class Attribute extends React.Component {
+    
+
+    handleChoice = (attributeName, itemID) => {
+        
+        this.props.onChange({[attributeName]: itemID})
+    }
+
     render () {
         const {attribute } = this.props
-        console.log(this.props)
+        console.log(this.props.onChange)
+     
 
         if (attribute.type === 'text') {
 
@@ -22,11 +30,12 @@ class Attribute extends React.Component {
                                         id={size.id}
                                         name={attribute.id}
                                         key={size.id}
-                                        value={size.value} />
+                                        value={size} />
                                         <label for={size.id}
                                         className="radio-label"
                                         key={size.index} 
-                                        onClick={() => this.props.onClick(size) }>
+      
+                                        onClick={() => this.handleChoice(attribute.name, size.id )}>
 
                                         {size.value}
                                         </label>
@@ -54,7 +63,7 @@ class Attribute extends React.Component {
                                         className="color-item"
                                         key={swatch.value}
                                         style={{backgroundColor:`${swatch.value}`}}
-                                        onClick={() => this.props.onClick(swatch) }
+                                        onClick={() => this.handleChoice(attribute.name, swatch.id )}
                                         />
                                         
                                     </>

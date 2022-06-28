@@ -23,7 +23,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         case CartActionTypes.ADD_ITEM:
             return {
                 ...state,
-                cartItems: addItemToCart(state.cartItems, action.payload)
+                cartItems: addItemToCart(state.cartItems, action.payload, state.product[1])
             };
         case CartActionTypes.REMOVE_ITEM:
             return {
@@ -38,7 +38,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         case CartActionTypes.DISPLAY_ITEM:
             return {
                 ...state,
-                product: (state.product, action.payload)
+                product: [state.product, action.payload]
             };
         default:
             return state    
