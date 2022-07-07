@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
+import {toggleCurrencyHidden} from '../../redux/currency/currency.action'
+import { selectCurrencyHidden } from '../../redux/currency/currency.selector';
 import { selectCurrencySwitch } from '../../redux/currency/currency.selector'
 import { selectCartItems, selectCartTotal, selectCartItemsCount } from "../../redux/cart/cart.selectors";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
@@ -12,13 +14,14 @@ import './checkout.style.scss'
 
 class CheckoutPage extends React.Component {
     render() {
-        const {currency, cartItems, total, itemCount } = this.props
+        const {currency, cartItems, total, itemCount, hiddenSwitch, toggleCurrencyHidden } = this.props
 
-        var tax = (total * 0.21).toFixed(2)
+        var tax = parseFloat(total * 0.21).toFixed(2)
+        var totalFloat = parseFloat(total).toFixed(2)
         const product = cartItems?.find((cartItem => cartItem.prices.find((price => price?.currency?.label === currency?.label))))
         const price  = product?.prices?.find((price => price?.currency?.label === currency?.label));
         return (
-            <div className="checkout-page">
+            <div className="checkout-page" onClick={() => hiddenSwitch ? '' : toggleCurrencyHidden() }>
                 <div className="checkout-header">
                     <div className="header-block">
                         <span>CART</span>
@@ -37,7 +40,7 @@ class CheckoutPage extends React.Component {
                     <div className="total-amount">
                         <div> {price?.currency?.symbol}{tax}</div>
                         <div> {itemCount}</div>
-                        <div>{price?.currency?.symbol}{total.toFixed(2)}</div>
+                        <div>{price?.currency?.symbol}{totalFloat}</div>
                     </div>
                     
                 </div>
@@ -52,7 +55,13 @@ const mapStateToProps = createStructuredSelector({
     currency: selectCurrencySwitch,
     cartItems: selectCartItems,
     total: selectCartTotal,
-    itemCount: selectCartItemsCount
+    itemCount: selectCartItemsCount,
+    hiddenSwitch: selectCurrencyHidden
 });
-
-export default connect(mapStateToProps)(CheckoutPage);
+const mapDispatchToProps = dispatch => ({
+    toggleCurrencyHidden: () => dispatch(toggleCurrencyHidden())
+  })
+ 
+  
+  
+export default connect(mapStateToProps, mapDispatchToProps)(CheckoutPage);

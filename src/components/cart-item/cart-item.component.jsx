@@ -12,13 +12,14 @@ class CartItem extends React.Component {
     render() {
         const { addItem, removeItem, currencySwitch, product } = this.props
         const price = product?.prices?.find((price => price?.currency?.label === currencySwitch?.label));
+        var priceFloat = parseFloat(price?.amount).toFixed(2)
         return (
             <div className="cart-item">
                 
                 <div className="item-details">
                     <span className="brand">{product.brand}</span>
                     <span className="name">{product.name}</span>
-                    <span className="price">{price?.currency?.symbol}{price?.amount}</span>
+                    <span className="price">{price?.currency?.symbol}{priceFloat}</span>
                     {
                         product.attributes.map(attribute => (
                             <Attribute key={attribute.id} attribute={attribute} />

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
+
 import './product-item.style.scss';
 import { addItem } from "../../redux/cart/cart.actions";
 
@@ -24,35 +25,41 @@ class Product extends React.Component {
 
     }
     handleChange = (value) => {
+        console.log(value)
         this.setState({attributes: value})
     }
 
     
 
-    handleTab = index => {
+    handleTab = (index) => {
         this.setState({index:index})
     }
     render() {
-        console.log(this.state)
+        console.log(this.props.item)
+        
+        var parse = require('html-react-parser')
 
         const item = this.props.item
         const {currencySwitch, addItem, display} = this.props
         const price = item.prices.find((price => price?.currency?.label === currencySwitch.label));
+        var priceFloat = parseFloat(price?.amount).toFixed(2)
        
         return (
             <div className="product-display">
                 <div className="display-item">
                     <div className="small-image-container">
-                        <div className="small-image">
+
                             {
                                 item.gallery.map((image, index) => (
-                                    <img className="small" src={image} alt='item' key={index}
-                                    onClick={() => this.handleTab(index)}
-                                    />
+                                    <div className="small-image">
+                                        <img className="small" src={image} alt='item' key={index}
+                                        onClick={() => this.handleTab(index)}
+                                        />
+                                    </div>
                                 ))
                             }
                     
-                        </div>
+                       
                     </div>
                 </div>
                 <div className="main">
@@ -76,15 +83,17 @@ class Product extends React.Component {
                         
                         <span > 
                             <div className="price">PRICE:</div>
-                            <div className="amount">{price?.currency?.symbol}{price?.amount}</div>
+                            <div className="amount">{price?.currency?.symbol}{priceFloat}</div>
                         </span>
                         <div className="button">
                             {
-                                (item.inStock && this.state.attributes !== '')  ? (<CustomButton onClick={() => addItem(item)}>ADD TO CART</CustomButton>) : <CustomButton outStock>ADD TO CART</CustomButton>
+                                (item.inStock )  ? (<CustomButton onClick={() => addItem(item)}>ADD TO CART</CustomButton>) : <CustomButton outStock>ADD TO CART</CustomButton>
                             }
                         </div>
                         
-                        <div className="description" dangerouslySetInnerHTML={{__html: item.description}} />
+                        <div className="description">
+                            {parse(item.description)}
+                        </div>
                     </div>
                 
                 </div>

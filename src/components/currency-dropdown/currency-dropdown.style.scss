@@ -1,6 +1,6 @@
 .drop-down {
     position: absolute;
-    width: 120px;
+    width: 114px;
     max-height:90vh;
     display: flex;
     flex-direction: column;
@@ -8,21 +8,29 @@
     margin: 0 auto;
     background-color: white;
     top: 100px;
-    right: 80px;
+    right: 60px;
     z-index: 100;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; ;
+    box-shadow: rgba(100, 100, 111, 0.1) 0px 7px 29px 0px; 
     
-    div {
+    .top {
         font-size: 18px;
         font-weight: 500;
-        display: block;
-        padding: 10px 10px;
-        letter-spacing: 0px;
-        text-align: center;
+        padding: 10px 0px;
+        display: flex;
+        justify-content: center;
+        height: 45px;
     
         &:hover {
-            background-color: rgba(0, 0, 0, .2);
+            background-color: #eeeeee;
+            cursor: pointer;
         }
-    }
 
+        .left {
+            transform: translateX(-10px);
+            
+        }
+    
+        
+    }
+    
 }

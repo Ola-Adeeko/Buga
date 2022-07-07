@@ -20,7 +20,7 @@ class CartDropdown extends React.Component {
 
         const product = cartItems?.find((cartItem => cartItem.prices.find((price => price?.currency?.label === currency?.label))))
         const price  = product?.prices?.find((price => price?.currency?.label === currency?.label));
-
+        var totalFloat = parseFloat(total).toFixed(2)
         return(
             <>
                 <div className="cart-dropdown">
@@ -36,7 +36,7 @@ class CartDropdown extends React.Component {
                     </div>
                     <div className="total">
                         <span className="rob">Total</span>
-                        <span>{price?.currency?.symbol}{total.toFixed(2)}</span>
+                        <span>{price?.currency?.symbol}{totalFloat}</span>
                     </div>
                     <div className="checkout">
                         <Link to='/checkout'>

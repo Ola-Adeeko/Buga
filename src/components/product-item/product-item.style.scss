@@ -1,28 +1,26 @@
 .product-display {
-  width: 95%;
+  width: 100%;
   margin: auto;
   margin-top: 40px;
   display:flex ;
+  justify-content: space-between;
 
 
     .display-item {
-      width: 10%;
-      display: flex;
-
+      width: 90px;
+   
       .small-image-container {
-        width: 90%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        gap: 20px;
-
+        width: 100%;  
+        
+    
         .small-image {
           height: 80px;
           width: 79px;
+          overflow: hidden;
+          margin-bottom: 10px;
 
           .small {
-            height: 100%;
+            width: 100%;
             cursor: pointer;
 
           }
@@ -40,10 +38,12 @@
         width: 60%;
         height: 520px;
         overflow: hidden;
-        position: S;
+        
 
         .large { 
           height: 100%;
+          width: 100%;
+          object-fit: contain;
         }
 
         .stock {

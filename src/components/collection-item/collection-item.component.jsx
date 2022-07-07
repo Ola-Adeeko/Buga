@@ -15,6 +15,8 @@ class CollectionItem extends React.Component {
        const {currencySwitch, item} = this.props
        const { id, brand, name, gallery, inStock } = item
         const price = item.prices.find((price => price?.currency?.label === currencySwitch?.label));
+
+        const floatPrice = parseFloat(price?.amount).toFixed(2)
        
             return (
                 <Link to={`/product/${id}`}>
@@ -27,7 +29,7 @@ class CollectionItem extends React.Component {
                         <div className="collection-footer">
                             <span className="brand">{brand} </span>
                             <span className="name">{name}</span>
-                            <span className="price">{price?.currency?.symbol}{price?.amount}</span>
+                            <span className="price">{price?.currency?.symbol}{floatPrice}</span>
                         </div>
                         <div className="stock">
                             <span>OUT OF STOCK</span>

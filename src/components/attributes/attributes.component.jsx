@@ -13,9 +13,7 @@ class Attribute extends React.Component {
 
     render () {
         const {attribute } = this.props
-        console.log(this.props.onChange)
-     
-
+        
         if (attribute.type === 'text') {
 
             return (

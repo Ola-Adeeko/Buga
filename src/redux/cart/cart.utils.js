@@ -1,15 +1,10 @@
-export const addItemToCart = (cartItems, cartItemToAdd, attribute) => {
-    const product = cartItems?.find((cartItem => cartItem?.attributes.find((att => att?.items.find(type => type?.id) === attribute.id))))
-    const attributeName  = product?.attributes.find((att => att?.items.find(type => type?.id) === attribute.id));
-    const attributeSpec = attributeName?.items.find(type => type?.id === attribute.id)
+export const addItemToCart = (cartItems, cartItemToAdd) => {
+    
 
     const existingCartItem = cartItems.find(
         cartItem => cartItem.id === cartItemToAdd.id
     );
 
-    if(attributeSpec?.id === attribute?.id) {
-        console.log('checked')
-    }
     if (existingCartItem) {
         return cartItems.map(cartItem =>
            ( cartItem.id === cartItemToAdd.id )
@@ -18,7 +13,7 @@ export const addItemToCart = (cartItems, cartItemToAdd, attribute) => {
         );
     }
 
-    return [...cartItems, { ...cartItemToAdd, quantity: 1 }]
+    return [...cartItems, { ...cartItemToAdd, quantity: 1}]
 };
 
 export const removeItemFromCart = (cartItems, cartItemToRemove) => {
