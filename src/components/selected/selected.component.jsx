@@ -1,9 +1,9 @@
 import React from "react";
 
-import'./attributes.style.scss';
+import'./selected.style.scss';
 
 
-class Attribute extends React.Component {
+class Selected extends React.Component {
     
 
     handleChoice = (attributeName, itemID) => {
@@ -13,7 +13,29 @@ class Attribute extends React.Component {
 
     render () {
         const {attribute } = this.props
+        const { selected } = this.props
+
+        const entry = attribute.items.entries()
+        console.log(Object.values(selected))
+
+        for (let x of entry) {
+            if (Object.values(selected) === Object.values(x) ) {
+                console.log(x, "is it")
+            } else {
+                console.log(Object.values(x))
+            }
+        }
+
         
+        if (Object.values(attribute.items).includes(selected)){
+            console.log('it is correct')
+        } else {
+            console.log('bobooo')
+        }
+
+        console.log(attribute)
+        console.log(selected)
+
         if (attribute.type === 'text') {
 
             return (
@@ -74,4 +96,4 @@ class Attribute extends React.Component {
 }
 
 
-export default Attribute;
+export default Selected;

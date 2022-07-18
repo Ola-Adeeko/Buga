@@ -64,7 +64,7 @@ class ProductDisplay extends React.Component {
 
                 const product = data?.product;
 
-                return <Product key={product.id} item={product} />
+                return <Product item={product} />
               }
               }
             

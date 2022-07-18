@@ -24,7 +24,17 @@ const GET_CATEGORY_QUERY = (name) => gql`
                   symbol
                 }
               }
-            gallery
+            gallery,
+            attributes {
+                id,
+                name,
+                type,
+                items {
+                  id,
+                  value,
+                  displayValue,
+                }
+              }
         }
     }
 }
