@@ -52,27 +52,20 @@
        
         .arrow1 {
           font-size: 30px;
-          cursor: pointer;
-          
-          
+          cursor: pointer; 
         }
         .arrow2 {
           font-size: 30px;
-          
           cursor: pointer;
-          
         }
-        
         .value {
           text-align: center;
           width: 24px;
           margin: 0 auto;
           font-size: 16px;
           font-weight: 500;
-        
         }
-      
-  }
+    }
     .item-details {
       width: 50%;
       display: flex;
@@ -104,7 +97,6 @@
           font-weight: 400;
           text-transform: capitalize;
           font-size: 14px;
-         
         }
 
         ul {
@@ -133,13 +125,10 @@
         .radio-item:checked + .radio-label {
           color: white;
           background-color: black;
-        }
-        
+        } 
       }
       .color {
         font-size: 13px;
-        
-
 
         span {
           font-weight: 400;
@@ -167,8 +156,6 @@
           outline: 1px solid #5ece7b;
           outline-offset: 2px;
         }
-        
-
       }
     }
   }

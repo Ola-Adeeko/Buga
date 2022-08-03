@@ -14,7 +14,7 @@
     .preview {
       width: 100%;
       display: grid;
-      grid-gap: 5%;
+      gap: 40px;
       grid-template-columns: repeat(3, minmax(0, 1fr)) ;
       grid-template-rows: repeat(auto-fill, minmax(400px, fit-content));
      
