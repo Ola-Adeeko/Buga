@@ -46,6 +46,9 @@ class ProductDisplay extends React.Component {
   state = {
     id: this.props.match.params.id,
   };
+  componentDidMount() {
+    document.title = `Buga | Shop | ${this.state.id}`;
+  }
 
   render() {
     const { hiddenSwitch, toggleCurrencyHidden } = this.props;

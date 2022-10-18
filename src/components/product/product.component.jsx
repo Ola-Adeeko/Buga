@@ -34,6 +34,7 @@ class Product extends React.Component {
       description: this.props.item.description,
       prices: this.props.item.prices,
       selected: {},
+      showCart: false,
     };
 
     this.props.item.attributes.forEach((attribute) => {
@@ -60,6 +61,7 @@ class Product extends React.Component {
           ...this.state.product.selected,
           [attributeName]: value,
         },
+        showCart: true,
       },
     });
   };
@@ -134,7 +136,7 @@ class Product extends React.Component {
               </div>
             </span>
             <div className="button">
-              {product.inStock ? (
+              {product.inStock && product.showCart ? (
                 <CustomButton onClick={() => addItem(product)}>
                   ADD TO CART
                 </CustomButton>

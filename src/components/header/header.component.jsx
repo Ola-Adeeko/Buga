@@ -12,18 +12,21 @@ import CurrencyIcon from "../currency-icon/currency-icon.component";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { selectCurrencyHidden } from "../../redux/currency/currency.selector";
 import { createStructuredSelector } from "reselect";
-
+import { toggleCurrencyHidden } from "../../redux/currency/currency.action";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 
 import "./header.style.scss";
 
 class Header extends React.Component {
   render() {
-    const { hidden, hiddenSwitch } = this.props;
+    const { hidden, hiddenSwitch, toggleCurrencyHidden } = this.props;
 
     return (
       <div className="parent">
-        <div className="header">
+        <div
+          className="header"
+          onClick={() => (hiddenSwitch ? "" : toggleCurrencyHidden())}
+        >
           <div className="options">
             <Query query={CATEGORIES_QUERY}>
               {({ loading, data }) => {
@@ -62,4 +65,8 @@ const mapStateToProps = createStructuredSelector({
   hiddenSwitch: selectCurrencyHidden,
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = (dispatch) => ({
+  toggleCurrencyHidden: () => dispatch(toggleCurrencyHidden()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

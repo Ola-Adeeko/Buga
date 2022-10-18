@@ -16,6 +16,9 @@ import CustomButton from "../../components/custom-button/custom-button.component
 import "./checkout.style.scss";
 
 class CheckoutPage extends React.Component {
+  componentDidMount() {
+    document.title = "Buga | Checkout";
+  }
   render() {
     const {
       currency,

@@ -18,6 +18,8 @@ class CollectionItem extends React.Component {
 
     const floatPrice = parseFloat(price?.amount).toFixed(2);
 
+    // console.log(item);
+
     return (
       <div className={`${inStock ? "" : "out-stock"} collection-item `}>
         <Link to={`/product/${id}`}>
@@ -26,7 +28,7 @@ class CollectionItem extends React.Component {
           </div>
           <div className="collection-footer">
             <span className="brand">{brand} </span>
-            <span className="name">{name}</span>
+            <span className="name">{name} </span>
             <span className="price">
               {price?.currency?.symbol}
               {floatPrice}

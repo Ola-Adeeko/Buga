@@ -73,8 +73,14 @@ class CheckoutItem extends React.Component {
           </span>
           <div className="image-container">
             <img src={gallery[this.state.index]} alt="item" />
-            <LeftArrow className="prev" onClick={() => prev(index)} />
-            <RightArrow className="next" onClick={() => next(index)} />
+            {gallery.length > 1 ? (
+              <>
+                <LeftArrow className="prev" onClick={() => prev(index)} />
+                <RightArrow className="next" onClick={() => next(index)} />
+              </>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>
