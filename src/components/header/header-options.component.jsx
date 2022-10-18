@@ -8,7 +8,16 @@ class HeaderOptions extends React.Component {
     const { category } = this.props;
     return (
       <NavLink to={`/shop/${category.name}`}>
-        <div className="option">{category.name}</div>
+        <div
+          // className={
+          //   window.location.pathname === `/shop/${category.name}`
+          //     ? "option-active"
+          //     : "option"
+          // }
+          className="option"
+        >
+          {category.name}
+        </div>
       </NavLink>
     );
   }

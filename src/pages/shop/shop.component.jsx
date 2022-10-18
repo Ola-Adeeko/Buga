@@ -7,6 +7,9 @@ import { selectCurrencyHidden } from "../../redux/currency/currency.selector";
 import { createStructuredSelector } from "reselect";
 
 class ShopPage extends React.Component {
+  componentDidMount() {
+    document.title = "Buga | Shop";
+  }
   render() {
     const { hiddenSwitch, toggleCurrencyHidden } = this.props;
 

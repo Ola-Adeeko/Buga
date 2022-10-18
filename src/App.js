@@ -5,6 +5,7 @@ import ShopPage from "./pages/shop/shop.component";
 import ProductDisplay from "./pages/product-display/product-display.component";
 import CheckoutPage from "./pages/checkout/checkout.component";
 import Header from "./components/header/header.component";
+
 import "./App.css";
 
 class App extends React.Component {
