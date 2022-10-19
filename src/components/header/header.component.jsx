@@ -14,10 +14,18 @@ import { selectCurrencyHidden } from "../../redux/currency/currency.selector";
 import { createStructuredSelector } from "reselect";
 import { toggleCurrencyHidden } from "../../redux/currency/currency.action";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
+import { FaTimes, FaBars } from "react-icons/fa";
 
 import "./header.style.scss";
 
 class Header extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      isOpen: false,
+    };
+  }
   render() {
     const { hidden, hiddenSwitch, toggleCurrencyHidden } = this.props;
 
@@ -25,20 +33,32 @@ class Header extends React.Component {
       <div className="parent">
         <div
           className="header"
-          onClick={() => (hiddenSwitch ? "" : toggleCurrencyHidden())}
+          // onClick={() => (hiddenSwitch ? "" : toggleCurrencyHidden())}
         >
-          <div className="options">
+          <div
+            className={` ${this.state.isOpen ? "" : "options-close"} options`}
+          >
             <Query query={CATEGORIES_QUERY}>
               {({ loading, data }) => {
                 if (loading) return <p>Loading....</p>;
 
                 const categories = data?.categories;
                 return categories.map((category) => (
-                  <HeaderOptions key={category.name} category={category} />
+                  <HeaderOptions
+                    key={category.name}
+                    category={category}
+                    onClick={() => this.setState({ isOpen: false })}
+                  />
                 ));
               }}
             </Query>
           </div>
+          <button
+            className="nav-btn"
+            onClick={() => this.setState({ isOpen: !this.state.isOpen })}
+          >
+            {this.state.isOpen ? <FaTimes /> : <FaBars />}
+          </button>
           <div className="logo-container">
             {" "}
             <Logo className="logo" />

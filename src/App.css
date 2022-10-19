@@ -1,13 +1,22 @@
 body {
-  font-family: 'Raleway', sans-serif;
-  padding:100px 100px 50px 100px ;
+  font-family: "Raleway", sans-serif;
+  padding: 100px 100px 50px 100px;
   height: fit-content;
 }
 a {
-  text-decoration:  none;
+  text-decoration: none;
   color: black;
 }
 
 * {
   box-sizing: border-box;
+}
+@media (max-width: 75em) {
+  /* For Tab-land  75em= 1200px/16px */
+  html {
+    /* font-size: 56.25%; */
+  }
+  body {
+    padding: 100px 30px 50px 30px;
+  }
 }
