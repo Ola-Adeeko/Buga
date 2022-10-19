@@ -5,7 +5,7 @@ import "./header.style.scss";
 
 class HeaderOptions extends React.Component {
   render() {
-    const { category } = this.props;
+    const { category, onClick } = this.props;
     return (
       <NavLink to={`/shop/${category.name}`}>
         <div
@@ -14,6 +14,7 @@ class HeaderOptions extends React.Component {
           //     ? "option-active"
           //     : "option"
           // }
+          onClick={onClick}
           className="option"
         >
           {category.name}
